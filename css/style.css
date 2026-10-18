@@ -1,0 +1,159 @@
+/* =========================================================
+   CAS Cheat Sheet – Aussehen
+   Farben ändern: nur die Werte unter :root (hell) und
+   im Dark-Mode-Block darunter anpassen.
+   ========================================================= */
+
+@font-face {
+  font-family: "TINspireKeys";
+  src: url("../fonts/TINspireKeysCX.ttf") format("truetype");
+  font-display: block;
+}
+
+:root {
+  --bg: #f3f6f6;          /* Seitenhintergrund */
+  --card: #ffffff;        /* Karten */
+  --ink: #1a2427;         /* Text */
+  --muted: #5d6c6e;       /* grauer Text */
+  --line: #dbe3e3;        /* Linien */
+  --accent: #0e5c5e;      /* Akzentfarbe (Petrol) */
+  --accent-soft: #e2efee; /* heller Akzent (Aufgabe, Code) */
+  --mark: #d9534a;        /* rote Markierung im Rechnerbild */
+  --mark-soft: rgba(217, 83, 74, .12);
+
+  --f-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-math: "Cambria Math", Cambria, "STIX Two Text", Georgia, serif;
+  --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111819; --card: #1a2324; --ink: #e7eeee; --muted: #9aabab; --line: #2c393a;
+    --accent: #7cc6c2; --accent-soft: #213536; --mark: #f07a6f; --mark-soft: rgba(240, 122, 111, .16);
+    color-scheme: dark;
+  }
+}
+
+/* ---------- Grundlagen ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 var(--f-body); -webkit-tap-highlight-color: transparent; }
+img { max-width: 100%; }
+p { margin: 0; }
+button { font: inherit; color: inherit; touch-action: manipulation; }
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+.wrap {
+  max-width: 640px; margin: 0 auto; display: grid; gap: 16px;
+  padding-top: max(20px, env(safe-area-inset-top, 0px));
+  padding-bottom: max(28px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- Startseite ---------- */
+.start { display: grid; gap: 2px; }
+.start small { font-size: 13px; color: var(--muted); letter-spacing: .03em; }
+.start h1 { margin: 0 0 14px; font-size: 30px; line-height: 1.15; }
+.liste { display: grid; gap: 10px; }
+.eintrag {
+  min-height: 60px; display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 14px;
+  text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer;
+}
+.eintrag:hover { border-color: var(--accent); }
+.eintrag b { font-size: 18px; font-weight: 400; }
+.eintrag .pfeil { color: var(--muted); font-size: 20px; }
+.nr { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--card); font-weight: 700; font-size: 15px; }
+
+/* ---------- Thema ---------- */
+.thema { display: grid; gap: 16px; }
+.zurueck { justify-self: start; background: none; border: 0; padding: 10px 0; min-height: 44px; color: var(--muted); cursor: pointer; font-size: 15px; }
+.kopf { display: flex; align-items: center; gap: 12px; }
+.kopf .nr { width: 34px; height: 34px; flex: none; font-size: 17px; }
+.thema h1 { margin: 0; font-size: 25px; line-height: 1.2; text-wrap: balance; }
+
+.aufgabe { background: var(--accent-soft); border-radius: 12px; padding: 16px 20px; display: grid; gap: 4px; }
+.aufgabe::before { content: "Aufgabe"; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.aufgabe ol { margin: 2px 0 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.aufgabe li { position: relative; padding-left: 26px; }
+.aufgabe li::before { content: attr(data-nr); position: absolute; left: 0; }
+
+/* Formeln */
+.m { font-family: var(--f-math); font-size: 1.08em; }
+.fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: .72em; line-height: 1.1; margin: 0 1px; }
+.fr > span:first-child { border-bottom: 1px solid currentColor; padding: 0 2px; }
+
+/* ---------- Schritt-Karte ---------- */
+.karte { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 16px; display: grid; gap: 18px; touch-action: pan-y; }
+.schritt { display: grid; gap: 12px; }
+.schritt h2 { margin: 0; font-size: 22px; line-height: 1.25; text-wrap: balance; }
+.schritt[data-teil]::before { content: attr(data-teil); font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: .04em; margin-bottom: -6px; }
+.karte.alle .schritt + .schritt { border-top: 1px solid var(--line); padding-top: 18px; }
+
+.hinweis { font-size: 14px; color: var(--muted); }
+.notiz { font-size: 15px; background: var(--bg); border-radius: 8px; padding: 10px 12px; }
+.label { font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+
+.wege { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.weg { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 8px; align-content: start; }
+
+code { font: 600 .9em var(--f-mono); color: var(--accent); background: var(--accent-soft); padding: 2px 6px; border-radius: 5px; overflow-wrap: anywhere; }
+
+/* TI-Tasten: <kbd>b</kbd> = menu usw. (Tabelle in README.md) */
+kbd { font-family: "TINspireKeys", var(--f-mono); font-size: 34px; line-height: 1; color: var(--ink); vertical-align: -0.3em; }
+.tasten { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+.tasten kbd { font-size: 40px; }
+
+.ergebnis { display: flex; flex-wrap: wrap; gap: 8px; }
+.ergebnis > span { font-family: var(--f-math); font-size: 18px; background: var(--accent-soft); padding: 6px 12px; border-radius: 8px; }
+
+/* Rechnerbild mit Markierungen */
+.bild { margin: 0; display: grid; grid-template-columns: minmax(0, 390px) 28px; gap: 6px; }
+.rahmen { position: relative; border: 6px solid #2b3036; border-radius: 8px; overflow: hidden; background: #fff; }
+.rahmen img { display: block; width: 100%; height: auto; }
+.zeile { position: absolute; left: 0; right: 0; background: var(--mark-soft); box-shadow: inset 0 0 0 2px var(--mark); }
+.punkte { position: relative; }
+.punkt { position: absolute; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--mark); color: #fff; font: 700 14px/26px var(--f-body); text-align: center; }
+.punkt.blass { opacity: .3; }
+
+table.lgs { border-collapse: collapse; font-family: var(--f-math); font-size: 17px; }
+.lgs td { padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.lgs td:first-child { color: var(--accent); font-family: var(--f-body); font-size: 14px; font-weight: 700; padding-right: 14px; }
+.scroll { overflow-x: auto; }
+
+/* ---------- Steuerleiste unten ---------- */
+.steuerung {
+  position: sticky; bottom: 0; z-index: 5; display: grid; gap: 10px;
+  margin: 0 -22px -16px; padding: 12px 22px max(14px, env(safe-area-inset-bottom, 0px));
+  background: var(--card); border-top: 1px solid var(--line); border-radius: 0 0 14px 14px;
+}
+.reihe { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.punkte-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.dot { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--bg); color: var(--muted); font-weight: 700; font-size: 15px; cursor: pointer; }
+.dot[aria-current="step"] { background: var(--accent-soft); color: var(--accent); }
+.link { background: none; border: 0; min-height: 40px; padding: 6px 2px; cursor: pointer; font-size: 15px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.knoepfe { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; }
+.knoepfe.einzeln { grid-template-columns: 1fr; }
+.btn { min-height: 50px; font-weight: 700; font-size: 16px; padding: 12px 18px; border-radius: 12px; border: 0; background: var(--ink); color: var(--card); cursor: pointer; }
+.btn.hell { background: var(--bg); color: var(--ink); }
+
+/* ---------- schmale Handys ---------- */
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .start h1 { font-size: 26px; }
+  .thema h1 { font-size: 21px; }
+  .schritt h2 { font-size: 20px; }
+  .karte { padding: 18px 16px 16px; }
+  .steuerung { margin: 0 -16px -16px; padding-left: 16px; padding-right: 16px; }
+  .aufgabe { padding: 14px 16px; }
+  kbd { font-size: 30px; }
+  .tasten kbd { font-size: 36px; }
+  table.lgs { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .schritt { animation: einblenden .18s ease-out; }
+}
+@keyframes einblenden { from { opacity: .3; } to { opacity: 1; } }

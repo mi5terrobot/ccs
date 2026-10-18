@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f6f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111819" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="CAS Cheat Sheet">
+  <title>CAS Cheat Sheet</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===================== STARTSEITE ===================== -->
+  <header id="start" class="start">
+    <small>TI-Nspire CX CAS</small>
+    <h1>CAS Cheat Sheet</h1>
+    <nav id="themenliste" class="liste"><!-- wird automatisch aus den Themen unten gebaut --></nav>
+  </header>
+
+
+  <!-- ===================== THEMA 1 ===================== -->
+  <section class="thema" id="t1">
+    <h1>Nullstellen bestimmen</h1>
+
+    <div class="aufgabe">
+      <p>Bestimme die Nullstellen von</p>
+      <p><span class="m"><i>f</i>(<i>x</i>) = −<span class="fr">1/2</span><i>x</i>² + 3<i>x</i> − 4</span></p>
+    </div>
+
+    <div class="karte">
+      <div class="schritt">
+        <h2>solve aufrufen</h2>
+        <div class="wege">
+          <div class="weg"><span class="label">Variante A</span><p><code>solve(</code> eintippen</p></div>
+          <div class="weg"><span class="label">Variante B</span><p class="tasten"><kbd>b</kbd> + <kbd>3</kbd> + <kbd>1</kbd></p><p class="hinweis">Algebra › Lösen</p></div>
+        </div>
+      </div>
+
+      <div class="schritt">
+        <h2>Gleichung und Variable eingeben</h2>
+        <p>Funktionsterm <code>=0</code>, dann Komma und <code>x</code>. Mit <kbd>·</kbd> bestätigen.</p>
+        <img src="bilder/1-nullstellen.png" alt="Rechner: solve(−1/2·x²+3·x−4=0,x) ergibt x=2 or x=4">
+      </div>
+
+      <div class="schritt">
+        <h2>Ergebnis aufschreiben</h2>
+        <p>Der Rechner zeigt <code>x=2 or x=4</code>.</p>
+        <div class="ergebnis"><span>N₁(2 | 0)</span><span>N₂(4 | 0)</span></div>
+        <p class="hinweis">Steht dort <code>false</code>, gibt es keine Nullstellen.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== THEMA 2 ===================== -->
+  <section class="thema" id="t2">
+    <h1><i>x</i>-Werte bestimmen</h1>
+
+    <div class="aufgabe">
+      <p>Gegeben ist die Funktion <span class="m"><i>f</i></span> mit <span class="m"><i>f</i>(<i>x</i>) = <i>x</i>² − 3<i>x</i></span>. Bestimme die Stellen,</p>
+      <ol>
+        <li data-nr="a)">an denen <span class="m"><i>f</i></span> den Wert 4 annimmt.</li>
+        <li data-nr="b)">an denen <span class="m"><i>f</i></span> Werte kleiner gleich 2 annimmt.</li>
+      </ol>
+    </div>
+
+    <div class="karte">
+      <div class="schritt">
+        <h2>solve aufrufen</h2>
+        <p class="notiz"><b>Hinweis:</b> Genauso wie bei den Nullstellen, nur steht rechts nicht 0.</p>
+        <div class="wege">
+          <div class="weg"><span class="label">Variante A</span><p><code>solve(</code> eintippen</p></div>
+          <div class="weg"><span class="label">Variante B</span><p class="tasten"><kbd>b</kbd> + <kbd>3</kbd> + <kbd>1</kbd></p><p class="hinweis">Algebra › Lösen</p></div>
+        </div>
+      </div>
+
+      <div class="schritt">
+        <h2>Gleichung und Variable eingeben</h2>
+        <p>a) <code>solve(x^2-3*x=4,x)</code><br>b) <code>solve(x^2-3*x≤2,x)</code></p>
+        <img src="bilder/2-x-werte.png" data-zeilen="33-72, 72-125" data-nummern="a, b" alt="Rechner: zwei solve-Eingaben mit Ergebnissen">
+      </div>
+
+      <div class="schritt">
+        <h2>Ergebnis aufschreiben</h2>
+        <div class="ergebnis"><span>a) <i>x</i> = −1, <i>x</i> = 4</span><span>b) −0,56 ≤ <i>x</i> ≤ 3,56</span></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== THEMA 3 ===================== -->
+  <section class="thema" id="t3">
+    <h1>Funktion definieren, Funktionswerte &amp; <i>x</i>-Werte</h1>
+
+    <div class="aufgabe">
+      <p>Die von Bakterien bedeckte Fläche wird durch die Funktion <span class="m"><i>A</i></span> mit
+        <span class="m"><i>A</i>(<i>t</i>) = −0,005<i>t</i>³ + 0,2<i>t</i>² + 0,9<i>t</i> + 1</span> modelliert
+        (<span class="m"><i>t</i></span> in h, <span class="m"><i>A</i>(<i>t</i>)</span> in cm²).</p>
+      <ol>
+        <li data-nr="a)">Welche Fläche ist um 5 Uhr (<span class="m"><i>t</i> = 5</span>) bedeckt?</li>
+        <li data-nr="b)">Wann ist die Fläche größer als 60 cm²?</li>
+      </ol>
+    </div>
+
+    <div class="karte">
+      <div class="schritt">
+        <h2>Funktion definieren</h2>
+        <p>Mit <code>:=</code> speichern. Das Zeichen bekommst du mit:</p>
+        <p class="tasten"><kbd>/</kbd> + <kbd>t</kbd></p>
+        <p><code>f(t):=-0.005*t^3+0.2*t^2+0.9*t+1</code></p>
+        <img src="bilder/3-funktion.png" data-zeilen="33-72, 72-104, 104-160" data-markiert="1" alt="Rechner: Funktion definieren, f(5), solve">
+      </div>
+
+      <div class="schritt" data-teil="Teil a">
+        <h2>Funktionswert berechnen</h2>
+        <p><code>f(5)</code> eingeben → 9,875</p>
+        <div class="ergebnis"><span>Um 5 Uhr sind 9,875 cm² bedeckt.</span></div>
+        <img src="bilder/3-funktion.png" data-zeilen="33-72, 72-104, 104-160" data-markiert="2" alt="Rechner: Funktion definieren, f(5), solve">
+      </div>
+
+      <div class="schritt" data-teil="Teil b">
+        <h2>x-Wert mit solve</h2>
+        <p><code>solve(f(t)&gt;60,t)</code></p>
+        <div class="ergebnis"><span>zwischen <i>t</i> ≈ 20,35 h und <i>t</i> ≈ 35,83 h</span></div>
+        <p class="hinweis">Die Lösung <i>t</i> &lt; −16,18 entfällt, weil die Zeit nicht negativ ist.</p>
+        <img src="bilder/3-funktion.png" data-zeilen="33-72, 72-104, 104-160" data-markiert="3" alt="Rechner: Funktion definieren, f(5), solve">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== THEMA 4 ===================== -->
+  <section class="thema" id="t4">
+    <h1>Ableitung bestimmen (bzw. definieren)</h1>
+
+    <div class="aufgabe">
+      <p>Funktion <span class="m"><i>f</i></span> mit <span class="m"><i>f</i>(<i>x</i>) = −<i>x</i>⁴ + <span class="fr">2/3</span><i>x</i>² − 3</span></p>
+      <ol>
+        <li data-nr="a)">Bestimme die Ableitung von <span class="m"><i>f</i></span>.</li>
+        <li data-nr="b)">Definiere die Ableitung und berechne <span class="m"><i>f</i> ′(3,5)</span>.</li>
+      </ol>
+    </div>
+
+    <div class="karte">
+      <div class="schritt" data-teil="Teil a">
+        <h2>Funktion ableiten</h2>
+        <p>Ableitungsvorlage öffnen:</p>
+        <p class="tasten"><kbd>g</kbd> + <kbd>-</kbd></p>
+        <p>Unten <code>x</code>, in die Klammer den Funktionsterm.</p>
+        <div class="ergebnis"><span><i>f</i> ′(<i>x</i>) = −4<i>x</i>³ + <span class="fr">4/3</span><i>x</i></span></div>
+        <img src="bilder/4a-ableiten.png" alt="Rechner: Ableitung mit d/dx">
+      </div>
+
+      <div class="schritt" data-teil="Teil b">
+        <h2>Funktion f definieren</h2>
+        <p><code>f(x):=-x^4+2/3*x^2-3</code></p>
+        <img src="bilder/4b-ableitung-definieren.png" data-zeilen="33-90, 90-145, 145-177" data-markiert="1" alt="Rechner: f definieren, f1 definieren, f1(3.5)">
+      </div>
+
+      <div class="schritt" data-teil="Teil b">
+        <h2>Ableitung als f1 definieren</h2>
+        <p><code>f1(x):=</code>, dann die Ableitungsvorlage <kbd>g</kbd> + <kbd>-</kbd> mit <code>f(x)</code> füllen.</p>
+        <img src="bilder/4b-ableitung-definieren.png" data-zeilen="33-90, 90-145, 145-177" data-markiert="2" alt="Rechner: f definieren, f1 definieren, f1(3.5)">
+      </div>
+
+      <div class="schritt" data-teil="Teil b">
+        <h2>Funktionswert der Ableitung</h2>
+        <p><code>f1(3.5)</code> eingeben.</p>
+        <div class="ergebnis"><span><i>f</i> ′(3,5) ≈ −166,83</span></div>
+        <img src="bilder/4b-ableitung-definieren.png" data-zeilen="33-90, 90-145, 145-177" data-markiert="3" alt="Rechner: f definieren, f1 definieren, f1(3.5)">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== THEMA 5 ===================== -->
+  <section class="thema" id="t5">
+    <h1>Lokale Extremstellen bestimmen</h1>
+
+    <div class="aufgabe">
+      <p>Bestimme alle lokalen Extremstellen von <span class="m"><i>f</i>(<i>x</i>) = <i>x</i>³ − 3<i>x</i></span> und ihre Art.</p>
+    </div>
+
+    <div class="karte">
+      <div class="schritt">
+        <h2>Funktion und Ableitungen definieren</h2>
+        <p><code>f(x):=x^3-3*x</code>, dann <code>f1</code> und <code>f2</code> mit der Ableitungsvorlage <kbd>g</kbd> + <kbd>-</kbd>.</p>
+        <img src="bilder/5-extremstellen.png" data-zeilen="33-143, 143-177, 177-241" data-markiert="1" alt="Rechner: f, f1, f2 definieren, solve, f2(-1), f2(1)">
+      </div>
+
+      <div class="schritt">
+        <h2>Notwendige Bedingung mit solve</h2>
+        <p><code>solve(f1(x)=0,x)</code> → <code>x=-1 or x=1</code></p>
+        <img src="bilder/5-extremstellen.png" data-zeilen="33-143, 143-177, 177-241" data-markiert="2" alt="Rechner: f, f1, f2 definieren, solve, f2(-1), f2(1)">
+      </div>
+
+      <div class="schritt">
+        <h2>Hinreichende Bedingung mit f2</h2>
+        <p><code>f2(-1)</code> und <code>f2(1)</code> berechnen.</p>
+        <div class="ergebnis">
+          <span><i>f</i> ″(−1) = −6 &lt; 0 → Hochstelle bei <i>x</i> = −1</span>
+          <span><i>f</i> ″(1) = 6 &gt; 0 → Tiefstelle bei <i>x</i> = 1</span>
+        </div>
+        <img src="bilder/5-extremstellen.png" data-zeilen="33-143, 143-177, 177-241" data-markiert="3" alt="Rechner: f, f1, f2 definieren, solve, f2(-1), f2(1)">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== THEMA 6 ===================== -->
+  <section class="thema" id="t6">
+    <h1>Lineares Gleichungssystem (LGS) lösen</h1>
+
+    <div class="aufgabe">
+      <p>Gesucht ist eine Funktion 3. Grades, deren Graph bei <span class="m"><i>x</i> = −2</span> die <i>x</i>-Achse schneidet
+        und bei <span class="m"><i>x</i> = 0</span> eine Wendetangente <span class="m"><i>t</i>(<i>x</i>) = <span class="fr">1/3</span><i>x</i> + 2</span> hat.</p>
+    </div>
+
+    <div class="karte">
+      <div class="schritt">
+        <h2>LGS mit Bedingungen aufstellen</h2>
+        <p><b>Ansatz:</b> <span class="m"><i>f</i>(<i>x</i>) = <i>a</i>·<i>x</i>³ + <i>b</i>·<i>x</i>² + <i>c</i>·<i>x</i> + <i>d</i></span></p>
+        <div class="scroll">
+          <table class="lgs">
+            <tr><td>I</td>  <td><i>f</i>(−2) = 0</td>                      <td>⇔</td><td>−8<i>a</i> + 4<i>b</i> − 2<i>c</i> + <i>d</i> = 0</td></tr>
+            <tr><td>II</td> <td><i>f</i>(0) = 2</td>                       <td>⇔</td><td><i>d</i> = 2</td></tr>
+            <tr><td>III</td><td><i>f</i> ″(0) = 0</td>                     <td>⇔</td><td>2<i>b</i> = 0</td></tr>
+            <tr><td>IV</td> <td><i>f</i> ′(0) = <span class="fr">1/3</span></td><td>⇔</td><td><i>c</i> = <span class="fr">1/3</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="schritt">
+        <h2>LGS-Vorlage öffnen</h2>
+        <p class="tasten"><kbd>b</kbd> + <kbd>3</kbd> + <kbd>7</kbd> + <kbd>2</kbd></p>
+        <p>Anzahl der Gleichungen <code>4</code> und Variablen <code>a,b,c,d</code> eintragen, dann OK.</p>
+        <img src="bilder/6a-lgs-vorlage.png" alt="Rechner: Dialog Lineares Gleichungssystem lösen">
+      </div>
+
+      <div class="schritt">
+        <h2>Die vier Gleichungen eintragen</h2>
+        <p>Jede Gleichung in eine Zeile der Vorlage, dann <kbd>·</kbd>.</p>
+        <img src="bilder/6b-lgs-eingabe.png" alt="Rechner: linSolve mit vier Gleichungen und Lösung">
+      </div>
+
+      <div class="schritt">
+        <h2>Lösung interpretieren</h2>
+        <p>Der Rechner liefert <span class="m"><i>a</i> = <span class="fr">1/6</span>, <i>b</i> = 0, <i>c</i> = <span class="fr">1/3</span>, <i>d</i> = 2</span>.</p>
+        <div class="ergebnis"><span><i>f</i>(<i>x</i>) = <span class="fr">1/6</span><i>x</i>³ + <span class="fr">1/3</span><i>x</i> + 2</span></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>
