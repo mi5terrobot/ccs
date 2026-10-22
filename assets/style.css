@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&family=STIX+Two+Math&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+    font: 100 20px "Noto Sans", sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+math {
+    font-family: "STIX Two Math", math;
+}
+
+.wrap {
+    max-width: 600px;
+    margin: 50px auto;
+    border: 1px solid red;
+}
+
+.beispiel > * {
+    margin: 10px;
+    padding: 10px;
+}
+.beispiel > :not(.aufgabe) {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.beispiel > .aufgabe {
+    border-left: 6px solid rgb(100, 100, 255);
+    background-color: rgba(0, 0, 255, 0.1);
+}
+.beispiel > .aufgabe .aufg {
+    color: rgb(0, 50, 150);
+    font-weight: 300;
+}
