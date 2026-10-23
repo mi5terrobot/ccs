@@ -53,8 +53,14 @@
     box-sizing: border-box;
 }
 
+html {
+    /* min 15px, wächst mit der Bildschirmbreite, max 18px */
+    font-size: clamp(15px, 2.5vw + 8px, 18px);
+}
+
 body {
-    font: 300 18px "Noto Sans", sans-serif;
+    margin: 0;
+    font: 300 1rem "Noto Sans", sans-serif;
     background-color: var(--hintergrund);
 }
 
@@ -62,45 +68,46 @@ img {
     max-width: 100%;
     height: auto;
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: 0.3rem;
 }
 
-math {
-    font-family: "Latin Modern Math", math;
+@media (max-width: 640px) {
+    .wrap {
+        max-width: none;
+        min-height: 100dvh;   /* volle Bildschirmhöhe */
+        margin: 0;
+        border: none;
+        border-radius: 0;
+    }
 }
 
 .wrap {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 5px;
+    max-width: 34rem;          /* ≈ 600px bei 18px */
+    margin: 2.8rem auto;
+    padding: 0.3rem;
     border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 0.55rem;
 }
 
-.beispiel>* {
-    margin: 10px;
-    padding: 10px;
+.beispiel > * {
+    margin: 0.55rem;
+    padding: 0.55rem;
 }
 
-.beispiel> :not(.aufgabe) {
+.beispiel > :not(.aufgabe) {
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 0.35rem;
 }
 
-.beispiel>.aufgabe {
+.beispiel > .aufgabe {
     background-color: var(--aufgabe-hintergrund);
-    border-left: 6px solid var(--aufgabe-border-left);
+    border-left: 0.35rem solid var(--aufgabe-border-left);
 }
 
-.beispiel>.aufgabe .aufg {
-    color: rgb(0, 50, 150);
-    font-weight: 400;
-}
-
-.beispiel>.inhalt .lsg {
+.beispiel > .inhalt .lsg {
     display: inline-block;
-    padding: 5px;
+    padding: 0.3rem;
     background-color: var(--loesung-hintergrund);
     border: 1px solid var(--loesung-border);
-    border-radius: 5px;
+    border-radius: 0.3rem;
 }
