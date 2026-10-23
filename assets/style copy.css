@@ -1,0 +1,88 @@
+/* --- FONTS --- */
+
+@font-face {
+    font-family: "Noto Sans";
+    font-weight: 200;
+    src: url("../fonts/noto-sans-200.woff2");
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    font-weight: 300;
+    src: url("../fonts/noto-sans-300.woff2");
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    font-weight: 400;
+    src: url("../fonts/noto-sans-regular.woff2");
+}
+
+@font-face {
+    font-family: "Noto Sans";
+    font-weight: 600;
+    src: url("../fonts/noto-sans-600.woff2");
+}
+
+@font-face {
+    font-family: "Noto Sans Math";
+    src: url("../fonts/noto-sans-math.woff2");
+}
+
+@font-face {
+    font-family: "Libertinus Math";
+    src: url("../fonts/libertinus-math-v2-latin-regular.woff2");
+}
+
+@font-face {
+    font-family: "Latin Modern Math";
+    src: url("../fonts/latinmodernmath.woff2");
+}
+
+/* --- COLORS --- */
+:root {
+    --aufgabe-hintergrund: rgba(0, 0, 255, 0.1);
+    --aufgabe-border-left: rgb(100, 100, 255);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    /* min 15px, wächst mit der Bildschirmbreite, max 18px */
+    font-size: clamp(15px, 2.5vw + 8px, 18px);
+}
+
+body {
+    margin: 0;
+    font: 300 1rem "Noto Sans", sans-serif;
+    background-color: #ccc;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.3rem;
+}
+
+
+.wrap {
+    max-width: 34rem;          /* ≈ 600px bei 18px */
+    margin: 0.3rem auto;
+    border: 1px solid black;
+}
+
+/* @media (max-width: 640px) {
+    .wrap {
+        max-width: none;
+        min-height: 100dvh;   /* volle Bildschirmhöhe */
+        margin: 0;
+        border: none;
+        border-radius: 0;
+    }
+} */
+
+.beispiel > * {
+    border: 1px solid black;
+}

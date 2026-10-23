@@ -39,14 +39,20 @@
     src: url("../fonts/latinmodernmath.woff2");
 }
 
+@font-face {
+    font-family: "TINspireKeysCX";
+    src: url("../fonts/TINspireKeysCX.ttf");
+}
+
 /* --- COLORS --- */
 :root {
-    --hintergrund: #f1fffe;
+    --hintergrund: #f4fefe;
+    --border: gray;
     --aufgabe-hintergrund: rgba(0, 0, 255, 0.1);
     --aufgabe-border-left: rgb(100, 100, 255);
-    --loesung-hintergrund: rgba(0, 255, 0, 0.1);
-    --loesung-border: rgba(0, 150, 0, 0.5);
-    --border-color: #d1d1d1;
+    --cas-befehle: rgba(255, 0, 0, 0.2);
+    --loesung-hintergrund: rgba(0, 200, 0, 0.2);
+    --loesung-border: rgb(0, 150, 0);
 }
 
 * {
@@ -55,7 +61,7 @@
 
 html {
     /* min 15px, wächst mit der Bildschirmbreite, max 18px */
-    font-size: clamp(15px, 2.5vw + 8px, 18px);
+    font-size: clamp(12px, 2.5vw + 8px, 16px);
 }
 
 body {
@@ -67,47 +73,94 @@ body {
 img {
     max-width: 100%;
     height: auto;
-    border: 1px solid var(--border-color);
     border-radius: 0.3rem;
 }
 
-@media (max-width: 640px) {
-    .wrap {
-        max-width: none;
-        min-height: 100dvh;   /* volle Bildschirmhöhe */
-        margin: 0;
-        border: none;
-        border-radius: 0;
-    }
+math {
+    font-family: "Latin Modern Math", math;
 }
 
 .wrap {
-    max-width: 34rem;          /* ≈ 600px bei 18px */
+    max-width: 30rem;          /* ≈ 600px bei 18px */
     margin: 0.3rem auto;
+    border: 0px solid black;
+}
+
+.cas {
+    font-family: "TINspireKeysCX";
     padding: 0.3rem;
-    border: 1px solid var(--border-color);
-    border-radius: 0.55rem;
+    border-radius: 0;
+    border: 1px solid var(--border);
 }
 
 .beispiel > * {
-    margin: 0.55rem;
-    padding: 0.55rem;
+    padding: 5px;
+    margin: 0;
+    border: 0px solid black;
 }
 
-.beispiel > :not(.aufgabe) {
-    border: 1px solid var(--border-color);
-    border-radius: 0.35rem;
+.beispiel h1 {
+    border-bottom: 2px solid black;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
 }
 
-.beispiel > .aufgabe {
+.beispiel .aufgabe::before {
+  content: "Beispiel: ";
+  font-weight: bold;
+  color: var(--aufgabe-border-left);
+}
+
+.beispiel .aufgabe {
     background-color: var(--aufgabe-hintergrund);
-    border-left: 0.35rem solid var(--aufgabe-border-left);
+    border-left: 5px solid var(--aufgabe-border-left);
 }
 
-.beispiel > .inhalt .lsg {
-    display: inline-block;
-    padding: 0.3rem;
+.beispiel .inhalt {
+    margin: 0.5rem 0;
+    border: 1px solid var(--border);
+}
+
+.beispiel .inhalt .schritt p {
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+}
+
+.beispiel .inhalt .schritt .lsg {
     background-color: var(--loesung-hintergrund);
     border: 1px solid var(--loesung-border);
+    padding: 0.3rem;
     border-radius: 0.3rem;
 }
+
+/* --- NAVIGATION STEPS --- */
+
+.schritt[hidden] { display: none; }
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navigation button {
+  font: inherit;
+  cursor: pointer;
+}
+.navigation button:disabled {
+  opacity: .4;
+  cursor: default;
+}
+
+.punkte { display: flex; gap: .5rem; }
+
+.punkt {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #ccc;
+}
+.punkt.aktiv { background: #333; }
