@@ -53,6 +53,7 @@
     --cas-befehle: rgba(255, 0, 0, 0.2);
     --loesung-hintergrund: rgba(0, 200, 0, 0.2);
     --loesung-border: rgb(0, 150, 0);
+    --navigation-hintergrund: rgba(255, 165, 0, 0.8);
 }
 
 * {
@@ -71,7 +72,7 @@ body {
 }
 
 img {
-    max-width: 100%;
+    max-width: 350px;
     height: auto;
     border-radius: 0.3rem;
 }
@@ -83,6 +84,7 @@ math {
 .wrap {
     max-width: 30rem;          /* ≈ 600px bei 18px */
     margin: 0.3rem auto;
+    padding: 1.5rem;
     border: 0px solid black;
 }
 
@@ -91,6 +93,7 @@ math {
     padding: 0.3rem;
     border-radius: 0;
     border: 1px solid var(--border);
+    white-space: nowrap;
 }
 
 .beispiel > * {
@@ -142,6 +145,7 @@ math {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  background: var(--navigation-hintergrund);
 }
 
 .navigation button {
